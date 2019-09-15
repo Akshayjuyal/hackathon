@@ -67,7 +67,7 @@ export default class MainPage extends Component{
                 <Fragment><table className="companyDesc-table">
                         <tr>
                             <td><div className="logo-location">{logo ? (<Fragment><img style={{ width: '100%' }} src={logo} /><div style={{ fontSize: '13px', fontWeight: 'bold' }}>{headquarters}</div></Fragment>) :  <img style={{ width: '100%' }} src={defaultImage} />}</div></td>
-                            <td width="40%" style={{ padding: "10px", paddingBottom: "25px", paddingtop: "35px" }}>{ this.props.description }</td>
+                            <td width="40%" className="text-description">{ this.props.description }</td>
                         </tr>
                         { founders ?
                             (<tr>
@@ -115,7 +115,7 @@ export default class MainPage extends Component{
                         <table className="companyDesc-table">
                             <tr>
                                 <td><div className="logo-location">{logo ? (<Fragment><img style={{ width: '100%' }} src={logo} /><div style={{ fontSize: '13px', fontWeight: 'bold' }}>{headquarters}</div></Fragment>) :  <img style={{ width: '100%' }} src={defaultImage} />}</div></td>
-                                <td width="40%" style={{ padding: "10px", paddingBottom: "25px", paddingtop: "35px" }}>{ this.props.description }</td>
+                                <td width="40%" className="text-description">{ this.props.description }</td>
                             </tr>
                             { founders ?
                                 (<tr>
