@@ -81,6 +81,9 @@ class InvestmentAndAcquisition extends Component {
 						</div>
 		    			<div className="m-0 w-100 row m-2">    				
 				    		<div className="w-100 card" style={{fontSize: '14px'}}>
+	    						<div className="w-100 d-flex  justify-content-center font-weight-bold" style={{fontSize: '20px'}}>
+	    							{this.formatHeadings('investments_details')}
+	    						</div>
 				    			{
 				    				Object.keys(data).length>0
 				    				? (
@@ -123,7 +126,10 @@ class InvestmentAndAcquisition extends Component {
 		    				this.state.isCollapse
 		    				? (
 		    					<div className="m-0 w-100 row m-2">
-						    		<div className="card w-100" style={{fontSize: '14px'}}>
+						    		<div className="card w-100" style={{fontSize: '14px'}}>						    			
+			    						<div className="w-100 d-flex  justify-content-center font-weight-bold" style={{fontSize: '20px'}}>
+			    							{this.formatHeadings('acquisitions_details')}
+			    						</div>
 						    			{
 						    				Object.keys(data).length>0
 						    				? (
