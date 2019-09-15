@@ -1,0 +1,49 @@
+.company-logo{
+    width: 100px;
+    float: left;
+    margin-right: 31px;
+    margin-left: 43px;
+}
+
+.company-desc{
+    width: 80%;
+    float: left;
+    margin-top: 8px;
+}
+
+.company-desc-section{
+    border-bottom: 1px solid #A9A9A9;
+    min-height: 121px;
+    width: 90%;
+    margin: auto;
+}
+
+.companyDesc-table{
+    border-collapse: collapse;
+    width: 99%;
+    border-radius: 6px;
+    background: white;
+    box-shadow: 2px 2px 2px grey;
+    float: left;
+    margin-right: 30px;
+    margin-bottom: 17px;
+}
+
+.td-class{
+    text-align: left;
+    padding: 8px;
+    padding-top: 16px !important;
+}
+
+.bold{
+    font-weight: bold;
+    color: gray;
+    padding-left: 23px;
+    padding-top: 2px;
+}
+
+.main-parent{
+    padding-top: 40px;
+    height: 150vh;
+    padding-bottom: 33px;
+  }
