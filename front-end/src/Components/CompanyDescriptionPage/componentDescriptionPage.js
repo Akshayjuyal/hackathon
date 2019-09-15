@@ -2,11 +2,19 @@ import React, {Component, Fragment} from 'react';
 import defaultImage from '../../default-image.png';
 import "../../styles/companyDescriptionPage.css"
 import NewsSection from './newsSection';
+import ExpandLess from "@material-ui/icons/ExpandLess";
+import ExpandMore from "@material-ui/icons/ExpandMore";
+import "../../styles/newsSection.css";
 
 
 export default class MainPage extends Component{
 
+    state = {
+        collapse: true
+    }
+
     render(){
+        console.log(this.props.description);
        let logo = "";
        let headquarters = "";
        let founders = "";
@@ -54,151 +62,175 @@ export default class MainPage extends Component{
        }
         return(
             <div className="main-parent">
-                <div style={{ width: '60%', marginLeft: '50px', minHeight: '70px', marginBottom: '12px', borderBottom: "0.5px solid grey", overflow: "auto" }}>
-                    <div style={{ width: '18%', float: 'left', marginBottom: '12px' }}>
-                        { logo ? (<Fragment><img style={{ width: '100%' }} src={logo} /><div style={{ fontSize: '13px', fontWeight: 'bold' }}>{headquarters}</div></Fragment>) :  <img style={{ width: '100%' }} src={defaultImage} /> }
-                    </div>
-                </div>
-                <div style={{ clear: 'left', marginLeft: '50px' }}>
-                <table className="companyDesc-table">
-                    { founders ?
-                        (<tr>
-                            <td width="7%" className="td-class bold">Founder</td>
-                            <td width="40%" className="td-class">{founders}</td>
-                        </tr>) : null
-                    }
-                    {foundedDate ?
-                    (<tr>
-                        <td width="7%" className="td-class bold">Founded Date</td>
-                        <td width="40%" className="td-class">{foundedDate.split('[')[0]}</td>
-                    </tr>) : null}
-                    { headquarters ? 
-                    (<tr>
-                        <td width="7%" className="td-class bold">Headquarters</td>
-                        <td width="40%" className="td-class">{headquarters}</td>
-                    </tr>): null}
-                    { areasServer ? 
-                    (<tr>
-                        <td width="7%" className="td-class bold">Areas Served</td>
-                        <td width="40%" className="td-class">{areasServer}</td>
-                    </tr>) : null }
-                    { 
-                        noOfEmployess && typeof(noOfEmployess) === "string" ? 
-                        (<tr>
-                            <td width="7%" className="td-class bold">No of Employess</td>
-                            <td width="40%" className="td-class">{noOfEmployess}</td>
-                        </tr>) : [
-                            noOfEmployess && typeof(noOfEmployess) === "object" ? (
-                            <tr>
-                                <td width="7%" className="td-class bold">No of Employess</td>
-                                <td width="40%" className="td-class">
-                                {noOfEmployess.map( emp => {
-                                   return emp
-                                })}
-                                </td>
-                            </tr>
-                            ) : null ]
-                    }
-                     { 
-                        industry && typeof(industry) === "string" ? 
-                        (<tr>
-                           <td width="7%" className="td-class bold">Industry</td>
-                        <   td width="40%" className="td-class">{industry}</td>
-                        </tr>) : [
-                            industry && typeof(industry) === "object" ? (
-                            <tr>
-                                <td width="7%" className="td-class bold">Industry</td>
-                                <td width="40%" className="td-class">
-                                {industry.map( (ind, index) => {
-                                    if(industry.length -1 === index)
-                                        return ind
-                                    else
-                                        return ind+", "
-                                })}
-                                </td>
-                            </tr>
-                            ) : null ]
-                    }
-                    {
-                        products.length > 0 ? (
-                            <tr>
-                            <td width="7%" className="td-class bold">Products</td>
-                                <td width="40%" className="td-class">{products.map( (prod, index) => {
-                                    if(products.length -1 === index)
-                                        return prod;
-                                    else
-                                        return prod+", ";
-                                })}</td>
-                            </tr>
-                        ): null
-                    }
-                    {
-                        revenue ? (
+                <div className="custom-conatiner">
+                { this.state.collapse ? (
+                <Fragment><table className="companyDesc-table">
                         <tr>
-                            <td width="7%" className="td-class bold">Revenue</td>
-                            <td width="40%" className="td-class">{revenue}</td>
-                        </tr>) : null
-                    }
-                    { netIncome ? (
-                    <tr>
-                        <td width="7%" className="td-class bold">Net Income</td>
-                        <td width="40%" className="td-class">{netIncome}</td>
-                    </tr>) : null }
-                    { operatingIncome ? 
+                            <td><div className="logo-location">{logo ? (<Fragment><img style={{ width: '100%' }} src={logo} /><div style={{ fontSize: '13px', fontWeight: 'bold' }}>{headquarters}</div></Fragment>) :  <img style={{ width: '100%' }} src={defaultImage} />}</div></td>
+                            <td width="40%" style={{ padding: "10px", paddingBottom: "25px", paddingtop: "35px" }}>{ this.props.description }</td>
+                        </tr>
+                        { founders ?
+                            (<tr>
+                                <td width="7%" className="td-class bold">Founder</td>
+                                <td width="40%" className="td-class">{founders}</td>
+                            </tr>) : null
+                        }
+                        {foundedDate ?
                         (<tr>
-                            <td width="7%" className="td-class bold">Operating Income</td>
-                            <td width="40%" className="td-class">{operatingIncome}</td>
-                        </tr>) : null
-                    }
-                    { totalAssest ?
+                            <td width="7%" className="td-class bold">Founded Date</td>
+                            <td width="40%" className="td-class">{foundedDate.split('[')[0]}</td>
+                        </tr>) : null}
+                        { headquarters ? 
                         (<tr>
-                            <td width="7%" className="td-class bold">Total Asset</td>
-                            <td width="40%" className="td-class">{totalAssest}</td>
-                        </tr>) : null
-                    }
-                    { totalEquity ?
+                            <td width="7%" className="td-class bold">Headquarters</td>
+                            <td width="40%" className="td-class">{headquarters}</td>
+                        </tr>): null}
+                        { areasServer ? 
                         (<tr>
-                            <td width="7%" className="td-class bold">Total Equity</td>
-                            <td width="40%" className="td-class">{totalEquity}</td>
-                        </tr>) : null
-                    }
-                     { website ?
-                        (<tr>
-                            <td width="7%" className="td-class bold">Website</td>
-                            <td width="40%" className="td-class"><a href={website}>{website}</a></td>
-                        </tr>) : null
-                    }
-                    {/* <tr>
-                        <td>Centro comercial Moctezuma</td>
-                        <td>Francisco Chang</td>
-                        <td>Mexico</td>
-                    </tr>
-                    <tr>
-                        <td>Ernst Handel</td>
-                        <td>Roland Mendel</td>
-                        <td>Austria</td>
-                    </tr>
-                    <tr>
-                        <td>Island Trading</td>
-                        <td>Helen Bennett</td>
-                        <td>UK</td>
-                    </tr>
-                    <tr>
-                        <td>Laughing Bacchus Winecellars</td>
-                        <td>Yoshi Tannamuri</td>
-                        <td>Canada</td>
-                    </tr>
-                    <tr>
-                        <td>Magazzini Alimentari Riuniti</td>
-                        <td>Giovanni Rovelli</td>
-                        <td>Italy</td>
-                    </tr> */}
+                            <td width="7%" className="td-class bold">Areas Served</td>
+                            <td width="40%" className="td-class">{areasServer}</td>
+                        </tr>) : null }
+                        { 
+                            noOfEmployess && typeof(noOfEmployess) === "string" ? 
+                            (<tr>
+                                <td width="7%" className="td-class bold">No of Employess</td>
+                                <td width="40%" className="td-class">{noOfEmployess}</td>
+                            </tr>) : [
+                                noOfEmployess && typeof(noOfEmployess) === "object" ? (
+                                <tr>
+                                    <td width="7%" className="td-class bold">No of Employess</td>
+                                    <td width="40%" className="td-class">
+                                    {noOfEmployess.map( emp => {
+                                    return emp
+                                    })}
+                                    </td>
+                                </tr>
+                                ) : null ]
+                        }
                     </table>
-                    
+                    <div><div className="expand-collapse" onClick={() => this.setState({collapse: false})}><ExpandMore style={{ fontSize: "37px" }} /></div></div>
+                    </Fragment>
+                    ):(
+                        <Fragment>
+                        <table className="companyDesc-table">
+                            <tr>
+                                <td><div className="logo-location">{logo ? (<Fragment><img style={{ width: '100%' }} src={logo} /><div style={{ fontSize: '13px', fontWeight: 'bold' }}>{headquarters}</div></Fragment>) :  <img style={{ width: '100%' }} src={defaultImage} />}</div></td>
+                                <td width="40%" style={{ padding: "10px", paddingBottom: "25px", paddingtop: "35px" }}>{ this.props.description }</td>
+                            </tr>
+                            { founders ?
+                                (<tr>
+                                    <td width="7%" className="td-class bold">Founder</td>
+                                    <td width="40%" className="td-class">{founders}</td>
+                                </tr>) : null
+                            }
+                            {foundedDate ?
+                            (<tr>
+                                <td width="7%" className="td-class bold">Founded Date</td>
+                                <td width="40%" className="td-class">{foundedDate.split('[')[0]}</td>
+                            </tr>) : null}
+                            { headquarters ? 
+                            (<tr>
+                                <td width="7%" className="td-class bold">Headquarters</td>
+                                <td width="40%" className="td-class">{headquarters}</td>
+                            </tr>): null}
+                            { areasServer ? 
+                            (<tr>
+                                <td width="7%" className="td-class bold">Areas Served</td>
+                                <td width="40%" className="td-class">{areasServer}</td>
+                            </tr>) : null }
+                            { 
+                                noOfEmployess && typeof(noOfEmployess) === "string" ? 
+                                (<tr>
+                                    <td width="7%" className="td-class bold">No of Employess</td>
+                                    <td width="40%" className="td-class">{noOfEmployess}</td>
+                                </tr>) : [
+                                    noOfEmployess && typeof(noOfEmployess) === "object" ? (
+                                    <tr>
+                                        <td width="7%" className="td-class bold">No of Employess</td>
+                                        <td width="40%" className="td-class">
+                                        {noOfEmployess.map( emp => {
+                                        return emp
+                                        })}
+                                        </td>
+                                    </tr>
+                                    ) : null ]
+                            }
+                            { 
+                                industry && typeof(industry) === "string" ? 
+                                (<tr>
+                                <td width="7%" className="td-class bold">Industry</td>
+                                <   td width="40%" className="td-class">{industry}</td>
+                                </tr>) : [
+                                    industry && typeof(industry) === "object" ? (
+                                    <tr>
+                                        <td width="7%" className="td-class bold">Industry</td>
+                                        <td width="40%" className="td-class">
+                                        {industry.map( (ind, index) => {
+                                            if(industry.length -1 === index)
+                                                return ind
+                                            else
+                                                return ind+", "
+                                        })}
+                                        </td>
+                                    </tr>
+                                    ) : null ]
+                            }
+                            {
+                                products.length > 0 ? (
+                                    <tr>
+                                    <td width="7%" className="td-class bold">Products</td>
+                                        <td width="40%" className="td-class">{products.map( (prod, index) => {
+                                            if(products.length -1 === index)
+                                                return prod;
+                                            else
+                                                return prod+", ";
+                                        })}</td>
+                                    </tr>
+                                ): null
+                            }
+                            {
+                                revenue ? (
+                                <tr>
+                                    <td width="7%" className="td-class bold">Revenue</td>
+                                    <td width="40%" className="td-class">{revenue}</td>
+                                </tr>) : null
+                            }
+                            { netIncome ? (
+                            <tr>
+                                <td width="7%" className="td-class bold">Net Income</td>
+                                <td width="40%" className="td-class">{netIncome}</td>
+                            </tr>) : null }
+                            { operatingIncome ? 
+                                (<tr>
+                                    <td width="7%" className="td-class bold">Operating Income</td>
+                                    <td width="40%" className="td-class">{operatingIncome}</td>
+                                </tr>) : null
+                            }
+                            { totalAssest ?
+                                (<tr>
+                                    <td width="7%" className="td-class bold">Total Asset</td>
+                                    <td width="40%" className="td-class">{totalAssest}</td>
+                                </tr>) : null
+                            }
+                            { totalEquity ?
+                                (<tr>
+                                    <td width="7%" className="td-class bold">Total Equity</td>
+                                    <td width="40%" className="td-class">{totalEquity}</td>
+                                </tr>) : null
+                            }
+                            { website ?
+                                (<tr>
+                                    <td width="7%" className="td-class bold">Website</td>
+                                    <td width="40%" className="td-class"><a href={website}>{website}</a></td>
+                                </tr>) : null
+                            }
+                        </table> 
+                        <div className="expand-collapse" onClick={() => this.setState({collapse: true})}><ExpandLess style={{ fontSize: "37px" }}/></div>
+                        </Fragment>)} 
                 </div>
-                <div style={{ float: "left", width: "30%", background: "white", minHeight:"400px", borderRadius: "6px", boxShadow: "2px 2px 2px grey" }}>
-                        <NewsSection companyName={this.props.companyName}/>
-                    </div>  
+                <div className="news-section">
+                    <NewsSection companyName={this.props.companyName}/>
+                </div>  
             </div>
         )
     }

@@ -93,9 +93,9 @@ export default class SearchBar extends Component {
             <SearchIcon 
                style={{
                   position: "absolute",
-                  bottom: "62px",
                   zIndex: "1",
-                  left: "16px"
+                  left: "1.7%",
+                  top: "13%"
                 }}
             />
             <Autosuggest

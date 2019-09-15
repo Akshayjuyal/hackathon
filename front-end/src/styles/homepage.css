@@ -1,0 +1,9 @@
+.search-icon-fixed{
+    margin-right: 34px;
+    position: fixed;
+    right: -12px;
+    font-size: 44px;
+    cursor: pointer;
+    top: 15px;
+    color: white;
+}
