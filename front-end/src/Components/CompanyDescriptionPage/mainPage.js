@@ -11,7 +11,8 @@ import * as urlconf from "../../config/config.json";
 export default class MainPage extends Component{
 
     state = {
-        companyDescriptionData : []
+        companyDescriptionData : [],
+        description: ""
     }
 
     componentWillMount(){
@@ -23,7 +24,14 @@ export default class MainPage extends Component{
                 resp => {
                     this.setState({companyDescriptionData: resp.data})
                 }
-            );   
+            ); 
+            
+            axios.post(`${urlconf.default.base_url}/getCompanyDescription/${companyName}`).then(
+                resp => {
+                    this.setState({description: resp.data.description})
+                }
+            );
+            
         }
         else{
             this.setState({companyDescriptionData: {}})
@@ -33,7 +41,7 @@ export default class MainPage extends Component{
     render(){
     return(
         <div>
-            <div><CompanyDescriptionPage companyName={this.props.companyName} companyDescriptionData={this.state.companyDescriptionData} /></div>
+            <div><CompanyDescriptionPage description={this.state.description} companyName={this.props.companyName} companyDescriptionData={this.state.companyDescriptionData} /></div>
         </div>
         )
     }
