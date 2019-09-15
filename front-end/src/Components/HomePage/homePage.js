@@ -3,6 +3,7 @@ import axios from 'axios';
 import SearchBar from './searchBar';
 import CompanyDescriptionPage from '../CompanyDescriptionPage/mainPage';
 import SearchIcon from "@material-ui/icons/Search";
+import "../../styles/homepage.css";
 
 class Homepage extends Component{
 
@@ -26,14 +27,7 @@ class Homepage extends Component{
             {this.state.selectedCompany ? (
                 <div>
                     <SearchIcon 
-                        style={{
-                            marginRight: "34px",
-                            position: "absolute",
-                            right: "0",
-                            fontSize: "26px",
-                            cursor: "pointer",
-                            top: "40px"
-                        }}
+                    className ="search-icon-fixed"
                     onClick={this.loadSearchPage} />
                     <CompanyDescriptionPage companyName={this.state.selectedCompany}/>
                 </div>) : (
@@ -51,20 +45,19 @@ class Homepage extends Component{
                         left: "0",
                         width: "61%",
                         height: "100px"
-                     }}>Search through all the company, legal, merges and acquisitions, gains, loses</div>
+                     }}>Ask fin-buddy for info about any company!</div>
                     <SearchBar onSearchSelection={this.onSearchSelection}/>
                     <div style={{
                             fontSize: "42px",
-                            width: "61%",
+                            width: "50%",
                             margin: "auto",
                             color: "white",
                             position: "absolute",
-                            top: "190px",
-                            right: "-51px",
+                            top: "184px",
                             bottom: "0px",
-                            left: "0px",
+                            left: "25%",
                             height: "100px"
-                    }}>Eval Company</div>
+                    }}>Fin-Buddy</div>
                 </div>)      
             }
         </div>)

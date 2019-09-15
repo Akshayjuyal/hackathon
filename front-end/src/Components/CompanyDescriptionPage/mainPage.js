@@ -6,7 +6,7 @@ import CompanyDescriptionPage from './componentDescriptionPage';
 import NewsSection from './newsSection';
 import "../../styles/companyDescriptionPage.css";
 import * as urlconf from "../../config/config.json";
-import Financials from "../Financials/financeComponent"
+
 
 
 
@@ -14,7 +14,9 @@ export default class MainPage extends Component{
 
     state = {
         companyDescriptionData : [],
-        companyFinancialsData : ''
+        companyFinancialsData : '',
+        description: "",
+        word_cloud:[]
     }
 
     componentWillMount(){
@@ -32,6 +34,18 @@ export default class MainPage extends Component{
                 console.log('resp.data._source=========',resp.data[0]._source)
                 this.setState({companyFinancialsData: resp.data._source})
             })
+            
+            axios.get(`${urlconf.default.base_url}/getCompanyDescription/${companyName}`).then(
+                resp => {
+                    this.setState({description: resp.data.description})
+                }
+            );
+            axios.get(`${urlconf.default.base_url}/getNewsWordCloud/${companyName}`).then(
+                resp => {
+                    console.log("===============resp.data.word_cloud=============",resp.data.word_cloud)
+                    this.setState(()=>{return{word_cloud: resp.data.word_cloud}})
+                }
+            );
         }
         else{
             this.setState({companyDescriptionData: {}})
@@ -42,10 +56,9 @@ export default class MainPage extends Component{
     return(
         <div className="container-fluid">
             <div className="row" style={{overflow:"hidden"}}>
-            <CompanyDescriptionPage companyName={this.props.companyName} companyDescriptionData={this.state.companyDescriptionData} />
+            <CompanyDescriptionPage companyName={this.props.companyName} companyDescriptionData={this.state.companyDescriptionData} data={this.state.word_cloud}/>
             </div>
-            <div className="row" style={{marginTop:"1rem",marginBottom:'2rem'}}><Financials companyName={this.props.companyName} /></div>
-        </div>
+            </div>
         )
     }
 }
