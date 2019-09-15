@@ -72,3 +72,9 @@
     font-size: 18px;
     cursor: pointer;
 }
+
+.text-description{
+    padding: 10px;
+    padding-bottom: 25px;
+    padding-top: 35px
+}
