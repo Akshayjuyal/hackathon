@@ -35,3 +35,5 @@
 html{
   background: linear-gradient(to right, rgb(67, 198, 172), rgb(25, 22, 84));
 }
+body{
+font-family: -webkit-body;}

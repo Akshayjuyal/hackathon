@@ -50,4 +50,4 @@ def get_news_word_cloud(company_name):
     return jsonify({'word_cloud':word_cloud})
 
 if __name__ == "__main__":
-    app.run(host='0.0.0.0', port=5001)
+    app.run(host='0.0.0.0', port=5000)

@@ -53,7 +53,10 @@ export default class MainPage extends Component{
                 website = this.props.companyDescriptionData[0]._source.website
        }
         return(
-            <div className="main-parent">
+            
+            <div 
+            className="main-parent"
+            >
                 <div style={{ width: '60%', marginLeft: '50px', minHeight: '70px', marginBottom: '12px', borderBottom: "0.5px solid grey", overflow: "auto" }}>
                     <div style={{ width: '18%', float: 'left', marginBottom: '12px' }}>
                         { logo ? (<Fragment><img style={{ width: '100%' }} src={logo} /><div style={{ fontSize: '13px', fontWeight: 'bold' }}>{headquarters}</div></Fragment>) :  <img style={{ width: '100%' }} src={defaultImage} /> }

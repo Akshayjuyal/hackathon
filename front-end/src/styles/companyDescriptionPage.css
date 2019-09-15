@@ -47,3 +47,10 @@
     height: 150vh;
     padding-bottom: 33px;
   }
+
+ .btn-link {
+    font-weight: 600;
+    color: #007bff;
+    background-color: transparent;
+    font-size: xx-large;
+ }

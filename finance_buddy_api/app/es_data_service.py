@@ -63,11 +63,14 @@ class ESDataService(object):
         if content:
             for item in content:
                 item = item.get('_source')
-                words.extend(word_tokenize(
+                if item.get('content'):
+                    words.extend(word_tokenize(
                     re.sub(r"(^|\W)\d+", "", item.get('content').replace('.', ' ').lower())))
-                words.extend(word_tokenize(
+                if item.get('headline'):
+                    words.extend(word_tokenize(
                     re.sub(r"(^|\W)\d+", "", item.get('headline').replace('.', ' ').lower())))
-                words.extend(word_tokenize(
+                if item.get('description'):
+                    words.extend(word_tokenize(
                     re.sub(r"(^|\W)\d+", "", item.get('description').replace('.', ' ').lower())))
         stop_words = set(stopwords.words('english'))
         extra_stop_words = ['chars','said','would']
