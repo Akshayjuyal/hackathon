@@ -4,6 +4,7 @@ import "../../styles/companyDescriptionPage.css"
 import NewsSection from './newsSection';
 import ExpandLess from "@material-ui/icons/ExpandLess";
 import ExpandMore from "@material-ui/icons/ExpandMore";
+import InvestmentAndAcquisition from '../InvestmentAndAcquisition/InvestmentAndAcquisition';
 import "../../styles/newsSection.css";
 
 
@@ -228,6 +229,10 @@ export default class MainPage extends Component{
                         <div className="expand-collapse" onClick={() => this.setState({collapse: true})}><ExpandLess style={{ fontSize: "37px" }}/></div>
                         </Fragment>)} 
                 </div>
+                <div className="news-section" 
+                style={{ minHeight: "auto"}}>
+                    <InvestmentAndAcquisition data={this.props.investmentAquisitionData}/>
+                </div> 
                 <div className="news-section">
                     <NewsSection companyName={this.props.companyName}/>
                 </div>  

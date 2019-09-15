@@ -12,7 +12,8 @@ export default class MainPage extends Component{
 
     state = {
         companyDescriptionData : [],
-        description: ""
+        description: "",
+        investmentAquisitionData: {},
     }
 
     componentWillMount(){
@@ -31,6 +32,16 @@ export default class MainPage extends Component{
                     this.setState({description: resp.data.description})
                 }
             );
+
+            axios.get(`${urlconf.default.base_url}/getCompanyInvestments/${companyName}`).then(
+                resp => {
+                    this.setState(()=>{
+                        return {
+                            investmentAquisitionData: resp.data[0]._source
+                        }
+                    })
+                }
+            );
             
         }
         else{
@@ -41,7 +52,14 @@ export default class MainPage extends Component{
     render(){
     return(
         <div>
-            <div><CompanyDescriptionPage description={this.state.description} companyName={this.props.companyName} companyDescriptionData={this.state.companyDescriptionData} /></div>
+            <div>
+                <CompanyDescriptionPage
+                    description={this.state.description}
+                    companyName={this.props.companyName}
+                    companyDescriptionData={this.state.companyDescriptionData}
+                    investmentAquisitionData={this.state.investmentAquisitionData}
+                />
+            </div>
         </div>
         )
     }
