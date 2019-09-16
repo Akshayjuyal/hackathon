@@ -15,8 +15,12 @@ class NewsSection extends Component{
 
     componentWillMount(){
         let companyName = this.props.companyName.toLowerCase().replace(" ", "_");
+        if(companyName.toLowerCase().includes('apple'))
+            companyName = companyName.split('_')[0];
+        if(companyName.toLowerCase().includes('unitedhealth'))
+            companyName = companyName.split('_')[0];
         axios.post(`${urlconf.default.base_url}/getCompanyNews/${companyName}`).then(resp => {
-            // let sortedData = resp.data.sort((first, second)=> { return first._source.sentiment_score - second._source.sentiment_score })
+            let sortedData = resp.data.sort((first, second)=> { return first._score - second._score })
             // let tempData = [];
             // for(let i=0 ; i<sortedData.length; i++){
             //     debugger
@@ -28,7 +32,7 @@ class NewsSection extends Component{
             //         return data;
             // });
             // debugger
-            this.setState({ news : resp.data});
+            this.setState({ news : sortedData});
         // })
         })
     }
