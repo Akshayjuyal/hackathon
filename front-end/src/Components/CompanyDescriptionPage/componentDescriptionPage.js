@@ -4,6 +4,7 @@ import "../../styles/companyDescriptionPage.css"
 import NewsSection from './newsSection';
 import ExpandLess from "@material-ui/icons/ExpandLess";
 import ExpandMore from "@material-ui/icons/ExpandMore";
+import InvestmentAndAcquisition from '../InvestmentAndAcquisition/InvestmentAndAcquisition';
 import "../../styles/newsSection.css";
 import Financials from "../Financials/financeComponent";
 import WordCloud from "../wordCloud/wordCloud"
@@ -12,9 +13,12 @@ import WordCloud from "../wordCloud/wordCloud"
 export default class MainPage extends Component{
 
     state = {
-        collapse: true
+        collapse: true,
+        companyFinancialsData:[]
+
     }
 
+    componentDidMount=()=>{this.setState({companyFinancialsData:this.props.companyFinancialsData})}
     render(){
         console.log(this.props.description);
        let logo = "";
@@ -69,7 +73,7 @@ export default class MainPage extends Component{
                 <Fragment><table className="companyDesc-table">
                         <tr>
                             <td><div className="logo-location">{logo ? (<Fragment><img style={{ width: '100%' }} src={logo} /><div style={{ fontSize: '13px', fontWeight: 'bold' }}>{headquarters}</div></Fragment>) :  <img style={{ width: '100%' }} src={defaultImage} />}</div></td>
-                            <td width="40%" style={{ padding: "10px", paddingBottom: "25px", paddingtop: "35px" }}>{ this.props.description }</td>
+                            <td width="40%" className="text-description">{ this.props.description }</td>
                         </tr>
                         { founders ?
                             (<tr>
@@ -117,7 +121,7 @@ export default class MainPage extends Component{
                         <table className="companyDesc-table">
                             <tr>
                                 <td><div className="logo-location">{logo ? (<Fragment><img style={{ width: '100%' }} src={logo} /><div style={{ fontSize: '13px', fontWeight: 'bold' }}>{headquarters}</div></Fragment>) :  <img style={{ width: '100%' }} src={defaultImage} />}</div></td>
-                                <td width="40%" style={{ padding: "10px", paddingBottom: "25px", paddingtop: "35px" }}>{ this.props.description }</td>
+                                <td width="40%" className="text-description">{ this.props.description }</td>
                             </tr>
                             { founders ?
                                 (<tr>
@@ -230,13 +234,22 @@ export default class MainPage extends Component{
                         <div className="expand-collapse" onClick={() => this.setState({collapse: true})}><ExpandLess style={{ fontSize: "37px" }}/></div>
                         </Fragment>)} 
                 </div>
-                <div  style={{marginTop:"1rem",marginBottom:'2rem'}}><Financials companyName={this.props.companyName} /></div>
+                {/* <div  style={{marginTop:"1rem",marginBottom:'2rem'}}>
+                <Financials companyFinancialsData={this.props.companyFinancialsData} /></div> */}
+                
+                <div className="container-fluid">
+                <div className="news-section" 
+                style={{ minHeight: "auto",marginTop:"1rem",marginBottom:'2rem'}}>
+                    <InvestmentAndAcquisition data={this.props.investmentAquisitionData}/>
+                </div> 
+                </div>
                 <div><WordCloud data={this.props.data}/></div>
                 <div className="container-fluid">
                 <div className="news-section">
                     <NewsSection companyName={this.props.companyName}/>
                 </div>
                 </div>
+                
                 
             </div>
         )

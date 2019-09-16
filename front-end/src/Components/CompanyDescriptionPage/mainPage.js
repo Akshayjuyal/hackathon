@@ -13,14 +13,16 @@ import * as urlconf from "../../config/config.json";
 export default class MainPage extends Component{
 
     state = {
-        companyDescriptionData : [],
+        companyDescriptionData : "",
         companyFinancialsData : '',
+        word_cloud:[],
         description: "",
-        word_cloud:[]
+        investmentAquisitionData: {},
     }
 
     componentWillMount(){
         let companyName = this.props.companyName.toLowerCase().replace(" ", "_");
+        localStorage.setItem("companyName",companyName)
         
         if(this.props.companyName){
 
@@ -31,8 +33,9 @@ export default class MainPage extends Component{
             ); 
             axios.get(`${urlconf.default.base_url}/getCompanyFinancials/${companyName}`)
             .then(resp => {
-                console.log('resp.data._source=========',resp.data[0]._source)
-                this.setState({companyFinancialsData: resp.data._source})
+                // console.log('resp.data._source=========',resp.data[0]._source)
+                this.setState(()=>{
+                    return {companyFinancialsData: resp.data[0]?resp.data[0]._source:[]}})
             })
             
             axios.get(`${urlconf.default.base_url}/getCompanyDescription/${companyName}`).then(
@@ -42,10 +45,20 @@ export default class MainPage extends Component{
             );
             axios.get(`${urlconf.default.base_url}/getNewsWordCloud/${companyName}`).then(
                 resp => {
-                    console.log("===============resp.data.word_cloud=============",resp.data.word_cloud)
                     this.setState(()=>{return{word_cloud: resp.data.word_cloud}})
                 }
             );
+
+            axios.get(`${urlconf.default.base_url}/getCompanyInvestments/${companyName}`).then(
+                resp => {
+                    this.setState(()=>{
+                        return {
+                            investmentAquisitionData: resp.data[0]._source
+                        }
+                    })
+                }
+            );
+            
         }
         else{
             this.setState({companyDescriptionData: {}})
@@ -54,11 +67,18 @@ export default class MainPage extends Component{
 
     render(){
     return(
-        <div className="container-fluid">
-            <div className="row" style={{overflow:"hidden"}}>
-            <CompanyDescriptionPage companyName={this.props.companyName} companyDescriptionData={this.state.companyDescriptionData} data={this.state.word_cloud}/>
+        <div>
+            <div>
+                <CompanyDescriptionPage
+                    description={this.state.description}
+                    companyName={this.props.companyName}
+                    companyDescriptionData={this.state.companyDescriptionData}
+                    data={this.state.word_cloud}
+                    investmentAquisitionData={this.state.investmentAquisitionData}
+                    companyFinancialsData={this.state.companyFinancialsData}
+                />
             </div>
-            </div>
+        </div>
         )
     }
 }

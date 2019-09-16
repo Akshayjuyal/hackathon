@@ -4,7 +4,7 @@ import * as urlconf from "../../config/config.json";
 import "../../styles/newsSection.css";
 import NewsComponent from "./newsComponent";
 import ExpandMore from "@material-ui/icons/ExpandMore";
-import ExpandLess from "@material-ui/icons/ExpandLess";
+
 
 class NewsSection extends Component{
 
@@ -16,14 +16,27 @@ class NewsSection extends Component{
     componentWillMount(){
         let companyName = this.props.companyName.toLowerCase().replace(" ", "_");
         axios.post(`${urlconf.default.base_url}/getCompanyNews/${companyName}`).then(resp => {
-            this.setState({ news :resp.data});
+            // let sortedData = resp.data.sort((first, second)=> { return first._source.sentiment_score - second._source.sentiment_score })
+            // let tempData = [];
+            // for(let i=0 ; i<sortedData.length; i++){
+            //     debugger
+            //     if(sortedData[i]._source.headline !== null && sortedData[i]._source.content !== null && sortedData[i]._source.headline.toLowerCase().includes(companyName) ||  sortedData[i]._source.content.toLowerCase().includes(companyName))
+            //         tempData.push(sortedData[i]);
+            // }
+            // sortedData = sortedData.map( (data) => {
+            //    if(data._source.headline.toLowerCase().includes(companyName) ||  data._source.content.toLowerCase().includes(companyName))
+            //         return data;
+            // });
+            // debugger
+            this.setState({ news : resp.data});
+        // })
         })
     }
 
     render(){
         return(
             <div>
-                <div className="news-text">Latest News</div>
+                <div className="news-text card-header">Latest News</div>
                 {
                     this.state.news.map( (eachNews, index) => {
                         if(index <= this.state.collapseCount){

@@ -47,10 +47,13 @@
   }
 
  .btn-link {
-    font-weight: 600;
-    color: #007bff;
+    font-weight: unset;
+    /* color: #007bff;
     background-color: transparent;
-    font-size: xx-large;
+    font-size: xx-large; */
+    color: #16191b;
+    background-color: transparent;
+    font-size: 27px;
  }
 .custom-conatiner{
     margin: auto;
@@ -77,4 +80,10 @@
     color: white;
     font-size: 18px;
     cursor: pointer;
+}
+
+.text-description{
+    padding: 10px;
+    padding-bottom: 25px;
+    padding-top: 35px
 }
