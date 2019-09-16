@@ -2,7 +2,7 @@ import React, {Fragment, Component} from 'react';
 import echarts from 'echarts';
 import moment from 'moment';
 
-export class EnterpriseValueChart extends Component {
+export class MarketCapitalizationChart extends Component {
     state={
         companyFinancialsData:[],
         yaxis_data:[],
@@ -69,7 +69,7 @@ export class EnterpriseValueChart extends Component {
         let xdata=[]
         if(this.props.companyFinancialsData.annual_enterprise_profile){
         this.props.companyFinancialsData.annual_enterprise_profile.map(dict =>{
-            ydata.push(this.convert(parseInt(dict.enterprisevalue,10)))
+            ydata.push(this.convert(parseInt(dict.marketcapitalization,10)))
             xdata.push(moment(dict.date).format('YYYY'))
             
             
@@ -93,7 +93,7 @@ export class EnterpriseValueChart extends Component {
     }
 
     enterprisevalueChart = (data) => {
-        const mychart = echarts.init(document.getElementById('financeValueEnterprise-chart'));
+        const mychart = echarts.init(document.getElementById('marketcapitalization-chart'));
         const option = {
             xAxis: {
                 name:"Years",
@@ -103,7 +103,7 @@ export class EnterpriseValueChart extends Component {
                 data: data?data.xaxis_data.reverse():""
             },
             yAxis: {
-                name:"Enterprise Value in Billions",
+                name:"Market Capitalization in Billions",
                 type: 'value',
                 
                 nameLocation:"middle",
@@ -113,7 +113,7 @@ export class EnterpriseValueChart extends Component {
                 
             },
             title:{
-                text:"Enterprise Value",
+                text:"Market Capatalization",
                 
                 textAlign:"left"
             },
@@ -137,9 +137,9 @@ export class EnterpriseValueChart extends Component {
         console.log(this.props)
         // debugger
         return (
-            <div id="financeValueEnterprise-chart" style={{height: '32rem', width:'100%'}}></div>
+            <div id="marketcapitalization-chart" style={{height: '32rem', width:'100%'}}></div>
         )
     }
 }
 
-export default EnterpriseValueChart
+export default MarketCapitalizationChart
