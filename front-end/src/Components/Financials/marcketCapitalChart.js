@@ -122,7 +122,8 @@ export class MarketCapitalizationChart extends Component {
                 type: 'bar',
                 itemStyle: {
                     normal: {color: 'rgb(0,145,218)'}
-                }
+                },
+                barWidth:50
             }],
             grid:{
                 containLabel:"true"
@@ -140,7 +141,7 @@ export class MarketCapitalizationChart extends Component {
         console.log(this.props)
         // debugger
         return (
-            <div id="marketcapitalization-chart" style={{height: '32rem', width:'100%'}}></div>
+            <div id="marketcapitalization-chart" style={{height: '27rem', width:'85%'}}></div>
         )
     }
 }

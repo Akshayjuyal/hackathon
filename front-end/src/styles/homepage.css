@@ -1,6 +1,6 @@
 .search-icon-fixed{
     margin-right: 34px;
-    position: fixed;
+    position: absolute;
     right: -12px;
     font-size: 44px;
     cursor: pointer;

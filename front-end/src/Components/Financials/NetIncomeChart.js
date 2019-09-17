@@ -140,7 +140,7 @@ export class NetIncomeChart extends Component {
         console.log(this.props)
         // debugger
         return (
-            <div id="netIncome-chart" style={{height: '32rem', width:'100%'}}></div>
+            <div id="netIncome-chart" style={{height: '27rem', width:'85%'}}></div>
         )
     }
 }

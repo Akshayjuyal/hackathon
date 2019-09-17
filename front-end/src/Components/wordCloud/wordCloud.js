@@ -62,7 +62,7 @@ class Wordcloud extends Component {
                     type: 'wordCloud',
                     gridSize: 0,
                     drawOutOfBound:true,
-                    sizeRange: [6, 30],
+                    sizeRange: [9, 50],
                     rotationRange: [-45, 45],
                     shape: 'pentagon',
                     width: 1800,
@@ -108,7 +108,7 @@ class Wordcloud extends Component {
                         <div className="card-body" dtyle={{    minHeight: "200px",
     maxHeight: "500px"}}>
                             <center>
-                        <div id="wordcloud-chart" style={{height: '450%', width:'100%'}}></div></center>
+                        <div id="wordcloud-chart" style={{height: '40rem', width:'100%'}}></div></center>
       </div>
                     </div>
                 </div>

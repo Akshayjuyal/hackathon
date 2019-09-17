@@ -121,7 +121,8 @@ export class EnterpriseValueChart extends Component {
                 data: data?data.yaxis_data.reverse():"",
                 type: 'bar', itemStyle: {
                     normal: {color: 'rgb(0,145,218)'}
-                }
+                },
+                barWidth:50
             }],
             grid:{
                 containLabel:"true"
@@ -139,7 +140,7 @@ export class EnterpriseValueChart extends Component {
         console.log(this.props)
         // debugger
         return (
-            <div id="financeValueEnterprise-chart" style={{height: '32rem', width:'100%'}}></div>
+            <div id="financeValueEnterprise-chart" style={{height: '27rem', width:'85%'}}></div>
         )
     }
 }
