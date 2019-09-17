@@ -2,7 +2,7 @@ import React, {Fragment, Component} from 'react';
 import echarts from 'echarts';
 import moment from 'moment';
 
-export class EnterpriseValueChart extends Component {
+export class GrossProfitChart extends Component {
     state={
         companyFinancialsData:[],
         yaxis_data:[],
@@ -67,9 +67,9 @@ export class EnterpriseValueChart extends Component {
         // console.log("oooooooooooooooomeathod called")
         let ydata=[]
         let xdata=[]
-        if(this.props.companyFinancialsData.annual_enterprise_profile){
-        this.props.companyFinancialsData.annual_enterprise_profile.map(dict =>{
-            ydata.push(this.convert(parseInt(dict.enterprisevalue,10)))
+        if(this.props.companyFinancialsData.annual_profile){
+        this.props.companyFinancialsData.annual_profile.map(dict =>{
+            ydata.push(this.convert(parseInt(dict.grossprofit,10)))
             xdata.push(moment(dict.date).format('YYYY'))
             
             
@@ -93,7 +93,7 @@ export class EnterpriseValueChart extends Component {
     }
 
     enterprisevalueChart = (data) => {
-        const mychart = echarts.init(document.getElementById('financeValueEnterprise-chart'));
+        const mychart = echarts.init(document.getElementById('GrossProfit-chart'));
         const option = {
             xAxis: {
                 name:"Years",
@@ -103,7 +103,7 @@ export class EnterpriseValueChart extends Component {
                 data: data?data.xaxis_data.reverse():""
             },
             yAxis: {
-                name:"Enterprise Value in Billions",
+                name:"Gross Profit in Billions",
                 type: 'value',
                 
                 nameLocation:"middle",
@@ -113,7 +113,7 @@ export class EnterpriseValueChart extends Component {
                 
             },
             title:{
-                text:"Enterprise Value",
+                text:"Gross Profit 10 Years",
                 
                 textAlign:"left"
             },
@@ -137,9 +137,9 @@ export class EnterpriseValueChart extends Component {
         console.log(this.props)
         // debugger
         return (
-            <div id="financeValueEnterprise-chart" style={{height: '32rem', width:'100%'}}></div>
+            <div id="GrossProfit-chart" style={{height: '32rem', width:'100%'}}></div>
         )
     }
 }
 
-export default EnterpriseValueChart
+export default GrossProfitChart

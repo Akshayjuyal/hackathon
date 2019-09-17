@@ -234,8 +234,8 @@ export default class MainPage extends Component{
                         <div className="expand-collapse" onClick={() => this.setState({collapse: true})}><ExpandLess style={{ fontSize: "37px" }}/></div>
                         </Fragment>)} 
                 </div>
-                {/* <div  style={{marginTop:"1rem",marginBottom:'2rem'}}>
-                <Financials companyFinancialsData={this.props.companyFinancialsData} /></div> */}
+                <div  style={{marginTop:"1rem",marginBottom:'2rem'}}>
+                <Financials companyFinancialsData={this.props.companyFinancialsData} /></div>
                 
                 <div className="container-fluid">
                 <div className="news-section" 

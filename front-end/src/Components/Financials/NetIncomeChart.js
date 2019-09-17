@@ -2,7 +2,7 @@ import React, {Fragment, Component} from 'react';
 import echarts from 'echarts';
 import moment from 'moment';
 
-export class EnterpriseValueChart extends Component {
+export class NetIncomeChart extends Component {
     state={
         companyFinancialsData:[],
         yaxis_data:[],
@@ -67,9 +67,9 @@ export class EnterpriseValueChart extends Component {
         // console.log("oooooooooooooooomeathod called")
         let ydata=[]
         let xdata=[]
-        if(this.props.companyFinancialsData.annual_enterprise_profile){
-        this.props.companyFinancialsData.annual_enterprise_profile.map(dict =>{
-            ydata.push(this.convert(parseInt(dict.enterprisevalue,10)))
+        if(this.props.companyFinancialsData.annual_profile){
+        this.props.companyFinancialsData.annual_profile.map(dict =>{
+            ydata.push(this.convert(parseInt(dict.netincome,10)))
             xdata.push(moment(dict.date).format('YYYY'))
             
             
@@ -93,7 +93,7 @@ export class EnterpriseValueChart extends Component {
     }
 
     enterprisevalueChart = (data) => {
-        const mychart = echarts.init(document.getElementById('financeValueEnterprise-chart'));
+        const mychart = echarts.init(document.getElementById('netIncome-chart'));
         const option = {
             xAxis: {
                 name:"Years",
@@ -103,7 +103,7 @@ export class EnterpriseValueChart extends Component {
                 data: data?data.xaxis_data.reverse():""
             },
             yAxis: {
-                name:"Enterprise Value in Billions",
+                name:"Net Income in Billions",
                 type: 'value',
                 
                 nameLocation:"middle",
@@ -113,7 +113,7 @@ export class EnterpriseValueChart extends Component {
                 
             },
             title:{
-                text:"Enterprise Value",
+                text:"Net Income 10 Years",
                 
                 textAlign:"left"
             },
@@ -137,9 +137,9 @@ export class EnterpriseValueChart extends Component {
         console.log(this.props)
         // debugger
         return (
-            <div id="financeValueEnterprise-chart" style={{height: '32rem', width:'100%'}}></div>
+            <div id="netIncome-chart" style={{height: '32rem', width:'100%'}}></div>
         )
     }
 }
 
-export default EnterpriseValueChart
+export default NetIncomeChart
