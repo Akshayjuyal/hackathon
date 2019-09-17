@@ -108,8 +108,8 @@ export class GrossProfitChart extends Component {
                 
                 nameLocation:"middle",
                 nameGap:45,
-                // min:Math.round(data.yaxis_data.sort((a,b)=>a-b))-300,
-                // max:data?Math.round((data.yaxis_data.sort((a,b)=>a-b).reverse()[0]+data.yaxis_data.sort((a,b)=>a-b).reverse()[0])*1.01):0
+                // min:Math.round(data.yaxis_data.sort((a,b)=>a-b)-(data.yaxis_data.sort((a,b)=>a-b))*1.2),
+                // max:data?Math.round((data.yaxis_data.sort((a,b)=>a-b).reverse()[0])+(data.yaxis_data.sort((a,b)=>a-b).reverse()[0])*0.02):0
                 
             },
             title:{
@@ -119,7 +119,11 @@ export class GrossProfitChart extends Component {
             },
             series: [{
                 data: data?data.yaxis_data.reverse():"",
-                type: 'bar'
+                type: 'line',
+                itemStyle: {
+                    normal: {color: 'rgb(0,145,218)'}
+                }
+
             }],
             grid:{
                 containLabel:"true"

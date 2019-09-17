@@ -109,7 +109,7 @@ export class EnterpriseValueChart extends Component {
                 nameLocation:"middle",
                 nameGap:45,
                 // min:Math.round(data.yaxis_data.sort((a,b)=>a-b))-300,
-                // max:data?Math.round((data.yaxis_data.sort((a,b)=>a-b).reverse()[0]+data.yaxis_data.sort((a,b)=>a-b).reverse()[0])*1.01):0
+                // max:data?Math.round((data.yaxis_data.sort((a,b)=>a-b).reverse()[0]+data.yaxis_data.sort((a,b)=>a-b).reverse()[0])*1.002):0
                 
             },
             title:{
@@ -119,7 +119,9 @@ export class EnterpriseValueChart extends Component {
             },
             series: [{
                 data: data?data.yaxis_data.reverse():"",
-                type: 'bar'
+                type: 'bar', itemStyle: {
+                    normal: {color: 'rgb(0,145,218)'}
+                }
             }],
             grid:{
                 containLabel:"true"

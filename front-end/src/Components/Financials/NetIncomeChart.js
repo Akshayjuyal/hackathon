@@ -119,7 +119,10 @@ export class NetIncomeChart extends Component {
             },
             series: [{
                 data: data?data.yaxis_data.reverse():"",
-                type: 'bar'
+                type: 'line',
+                itemStyle: {
+                    normal: {color: 'rgb(0,145,218)'}
+                }
             }],
             grid:{
                 containLabel:"true"
