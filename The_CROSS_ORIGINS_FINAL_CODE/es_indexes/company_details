@@ -1,0 +1,80 @@
+PUT /company_details
+{
+  "settings": {
+    "number_of_shards": 3,
+    "number_of_replicas": 2
+  },
+  "mappings": {
+    "properties": {
+      "company_name": {
+        "type": "text"
+      },
+      "area_served": {
+        "type": "text"
+      },
+      "divisions": {
+        "type": "text"
+      },
+      "founded": {
+        "type": "text"
+      },
+      "founder": {
+        "type": "text"
+      },
+      "headquarters": {
+        "type": "text"
+      },
+      "ISIN": {
+        "type": "text"
+      },
+      "industry": {
+        "type": "text"
+      },
+      "key_people": {
+        "type": "text"
+      },
+      "net_income": {
+        "type": "text"
+      },
+      "employee_count": {
+        "type": "text"
+      },
+      "location_count": {
+        "type": "text"
+      },
+      "operating_income": {
+        "type": "text"
+      },
+      "owner": {
+        "type": "text"
+      },
+      "revenue": {
+        "type": "text"
+      },
+      "services": {
+        "type": "text"
+      },
+      "subsidiaries": {
+        "type": "text"
+      },
+      "total_assets": {
+        "type": "text"
+      },
+      "total_equity": {
+        "type": "text"
+      },
+      "traded_as": {
+        "type": "text"
+      },
+      "type": {
+        "type": "text"
+      },
+      "website": {
+        "type": "text"
+      },
+      "logo": {
+        "type": "text"
+      }
+    }
+  }
+}

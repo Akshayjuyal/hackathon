@@ -1,0 +1,29 @@
+{
+    "WMT": {
+        "company_name": "Walmart"
+    },
+    "AMZN": {
+        "company_name": "Amazon.com, Inc."
+    },
+    "AAPL": {
+        "company_name": "Apple Inc"
+    },
+    "XOM": {
+        "company_name": "Exxon Mobil"
+    },
+    "MCK": {
+        "company_name": "McKesson Corporation"
+    },
+    "UNH": {
+        "company_name": "UnitedHealth Group"
+    },
+    "CVS": {
+        "company_name": "CVS Health"
+    },
+    "GM": {
+        "company_name": "General Motors"
+    },
+    "F": {
+        "company_name": "Ford"
+    }
+}

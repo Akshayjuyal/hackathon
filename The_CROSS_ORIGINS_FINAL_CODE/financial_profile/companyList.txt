@@ -1,0 +1,2 @@
+['Walmart', 'Berkshire Hathaway', 'Apple Inc', 'Exxon Mobil', 'McKesson Corporation', 
+          'UnitedHealth Group', 'CVS Health', 'General Motors', 'Ford']
